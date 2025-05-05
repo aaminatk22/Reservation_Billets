@@ -1,46 +1,121 @@
-<div class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
-  <h2 class="text-2xl font-bold mb-6 text-center">Réservation de billet</h2>
-
-  <form (ngSubmit)="onSubmit()" class="space-y-4">
-    <div>
-      <label for="name" class="block text-sm font-medium text-gray-700">Nom complet</label>
-      <input type="text" id="name" [(ngModel)]="reservation.name" name="name" required
-             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+<div class="max-w-2xl mx-auto p-6">
+  <!-- Carte avec effet de profondeur -->
+  <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+    <!-- En-tête avec dégradé -->
+    <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 text-white">
+      <h2 class="text-3xl font-bold text-center flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
+        </svg>
+        Réservation de billet
+      </h2>
+      <p class="text-center text-blue-100 mt-2">Remplissez les détails de votre voyage</p>
     </div>
 
-    <div>
-      <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-      <input type="email" id="email" [(ngModel)]="reservation.email" name="email" required
-             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
-    </div>
+    <!-- Formulaire -->
+    <form (ngSubmit)="onSubmit()" class="p-6 sm:p-8 space-y-6">
+      <!-- Groupe de champs -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Nom complet -->
+        <div class="space-y-2">
+          <label for="name" class="block text-sm font-medium text-gray-700">Nom complet <span class="text-red-500">*</span></label>
+          <div class="relative">
+            <input type="text" id="name" [(ngModel)]="reservation.name" name="name" required
+                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border pl-10 transition duration-300 hover:border-blue-300"
+                   placeholder="Jean Dupont">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+        </div>
 
-    <div>
-      <label for="destination" class="block text-sm font-medium text-gray-700">Destination</label>
-      <input type="text" id="destination" [(ngModel)]="reservation.destination" name="destination" required
-             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
-    </div>
+        <!-- Email -->
+        <div class="space-y-2">
+          <label for="email" class="block text-sm font-medium text-gray-700">Email <span class="text-red-500">*</span></label>
+          <div class="relative">
+            <input type="email" id="email" [(ngModel)]="reservation.email" name="email" required
+                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border pl-10 transition duration-300 hover:border-blue-300"
+                   placeholder="exemple@email.com">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div>
-      <label for="date" class="block text-sm font-medium text-gray-700">Date</label>
-      <input type="date" id="date" [(ngModel)]="reservation.date" name="date" required
-             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
-    </div>
+      <!-- Destination -->
+      <div class="space-y-2">
+        <label for="destination" class="block text-sm font-medium text-gray-700">Destination <span class="text-red-500">*</span></label>
+        <div class="relative">
+          <input type="text" id="destination" [(ngModel)]="reservation.destination" name="destination" required
+                 class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border pl-10 transition duration-300 hover:border-blue-300"
+                 placeholder="New York, Paris...">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+        </div>
+      </div>
 
-    <div>
-      <label for="passengers" class="block text-sm font-medium text-gray-700">Nombre de passagers</label>
-      <input type="number" id="passengers" [(ngModel)]="reservation.passengers" name="passengers" min="1" required
-             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
-    </div>
+      <!-- Date et Passagers -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Date -->
+        <div class="space-y-2">
+          <label for="date" class="block text-sm font-medium text-gray-700">Date <span class="text-red-500">*</span></label>
+          <div class="relative">
+            <input type="date" id="date" [(ngModel)]="reservation.date" name="date" required
+                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border pl-10 transition duration-300 hover:border-blue-300">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+          </div>
+        </div>
 
-    <div>
-      <button type="submit"
-              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-        Réserver
-      </button>
-    </div>
+        <!-- Nombre de passagers -->
+        <div class="space-y-2">
+          <label for="passengers" class="block text-sm font-medium text-gray-700">Passagers <span class="text-red-500">*</span></label>
+          <div class="relative">
+            <input type="number" id="passengers" [(ngModel)]="reservation.passengers" name="passengers" min="1" required
+                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border pl-10 transition duration-300 hover:border-blue-300"
+                   placeholder="1">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div *ngIf="successMessage" class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg">
-      {{ successMessage }}
-    </div>
-  </form>
+      <!-- Bouton de soumission -->
+      <div class="pt-4">
+        <button type="submit"
+                class="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+          Confirmer la réservation
+        </button>
+      </div>
+
+      <!-- Message de succès -->
+      <div *ngIf="successMessage" class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded-r-lg">
+        <div class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-3" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <p class="text-green-700 font-medium">{{ successMessage }}</p>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
