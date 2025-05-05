@@ -1,0 +1,23 @@
+<div class="min-h-screen bg-gray-100">
+  <nav class="bg-blue-600 text-white shadow-lg">
+    <div class="container mx-auto px-6 py-3">
+      <div class="flex justify-between items-center">
+        <a routerLink="/" class="text-2xl font-bold">TicketReservationApp</a>
+        <div class="flex space-x-4">
+          <a routerLink="/reserver" class="px-3 py-2 rounded hover:bg-blue-700">Réserver</a>
+          <a routerLink="/reservations" class="px-3 py-2 rounded hover:bg-blue-700">Mes réservations</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-6 py-8">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-6 mt-8">
+    <div class="container mx-auto px-6 text-center">
+      <p>© 2023 TicketReservationApp - Fonctionne hors ligne</p>
+    </div>
+  </footer>
+</div>

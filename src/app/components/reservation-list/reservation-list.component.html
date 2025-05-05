@@ -1,0 +1,37 @@
+<div class="max-w-4xl mx-auto p-6">
+  <h2 class="text-2xl font-bold mb-6">Liste des réservations</h2>
+
+  <div *ngIf="reservations.length === 0" class="text-center py-8 bg-gray-100 rounded-lg">
+    <p>Aucune réservation trouvée.</p>
+  </div>
+
+  <div *ngIf="reservations.length > 0" class="overflow-x-auto">
+    <table class="min-w-full bg-white rounded-lg overflow-hidden">
+      <thead class="bg-gray-800 text-white">
+      <tr>
+        <th class="py-3 px-4 text-left">Nom</th>
+        <th class="py-3 px-4 text-left">Email</th>
+        <th class="py-3 px-4 text-left">Destination</th>
+        <th class="py-3 px-4 text-left">Date</th>
+        <th class="py-3 px-4 text-left">Passagers</th>
+        <th class="py-3 px-4 text-left">Actions</th>
+      </tr>
+      </thead>
+      <tbody class="text-gray-700">
+      <tr *ngFor="let reservation of reservations" class="border-b border-gray-200 hover:bg-gray-50">
+        <td class="py-3 px-4">{{ reservation.name }}</td>
+        <td class="py-3 px-4">{{ reservation.email }}</td>
+        <td class="py-3 px-4">{{ reservation.destination }}</td>
+        <td class="py-3 px-4">{{ reservation.date | date }}</td>
+        <td class="py-3 px-4">{{ reservation.passengers }}</td>
+        <td class="py-3 px-4">
+          <button (click)="cancelReservation(reservation.id)"
+                  class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">
+            Annuler
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
