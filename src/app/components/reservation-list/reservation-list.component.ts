@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from '../../services/db.service';
 import { Reservation } from '../../models/reservation.model';
+import { CommonModule , DatePipe} from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
+  standalone: true,
+  imports: [CommonModule, FormsModule, DatePipe],
   selector: 'app-reservation-list',
   templateUrl: './reservation-list.component.html',
   styleUrls: ['./reservation-list.component.scss']

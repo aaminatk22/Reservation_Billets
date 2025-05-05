@@ -11,10 +11,9 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "main": "src/main.ts",
-            "browser": "src/main.ts",
             "outputPath": "dist/atelier-angular",
             "index": "src/index.html",
             "polyfills": ["zone.js"],
@@ -26,10 +25,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "customWebpackConfig": {
-              "path": "./webpack.config.js"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {

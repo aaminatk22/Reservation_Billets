@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { DbService } from '../../services/db.service';
 import { Reservation } from '../../models/reservation.model';
+import { CommonModule  } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   selector: 'app-reservation-form',
   templateUrl: './reservation-form.component.html',
   styleUrls: ['./reservation-form.component.scss']
